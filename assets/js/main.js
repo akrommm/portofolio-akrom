@@ -65,23 +65,29 @@
   /**
    * Scroll top button
    */
-  let scrollTop = document.querySelector('.scroll-top');
+  const scrollTopBtn = document.getElementById('scroll-top');
 
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+  // Tampilkan tombol saat scroll ke bawah
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.classList.add('active');
+    } else {
+      scrollTopBtn.classList.remove('active');
     }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   });
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+  // Animasi takeoff saat diklik
+  scrollTopBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollTopBtn.classList.add('launch');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Reset animasi setelah selesai
+    setTimeout(() => {
+      scrollTopBtn.classList.remove('launch');
+    }, 1000);
+  });
+
 
   /**
    * Animation on scroll function and init
