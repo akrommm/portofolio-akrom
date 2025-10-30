@@ -9,23 +9,22 @@
 
 /* 🌑 Modern Professional Dark Theme - Web Developer Portfolio */
 :root {
-  /* === Global Colors === */
-  --background-color: #0d1117; /* Deep dark base, elegan dan tidak terlalu hitam pekat */
-  --surface-color: #161b22; /* Untuk card, navbar, dan section box agar sedikit kontras */
+  --background-color: #0d1117;
+  --surface-color: #161b22;
 
-  --default-color: #c9d1d9; /* Teks utama, netral dan nyaman dibaca */
-  --heading-color: #f0f6fc; /* Headings lebih terang untuk menonjolkan judul */
-  --contrast-color: #ffffff; /* Warna teks kontras untuk area dengan accent */
+  --default-color: #c9d1d9;
+  --heading-color: #f0f6fc;
+  --contrast-color: #ffffff;
 
-  --accent-color: #58a6ff; /* Biru cerah modern, khas developer (GitHub / VS Code vibe) */
+  --accent-color: #58a6ff;
 
   /* === Nav Menu Colors === */
-  --nav-color: #e6edf3; /* Warna link utama pada navbar */
-  --nav-hover-color: #58a6ff; /* Efek hover biru profesional */
-  --nav-mobile-background-color: #0d1117; /* Background menu mobile agar seragam */
-  --nav-dropdown-background-color: #161b22; /* Background dropdown yang lembut */
-  --nav-dropdown-color: #c9d1d9; /* Warna teks dropdown */
-  --nav-dropdown-hover-color: #79c0ff; /* Hover warna biru muda, smooth */
+  --nav-color: #e6edf3;
+  --nav-hover-color: #58a6ff;
+  --nav-mobile-background-color: #0d1117;
+  --nav-dropdown-background-color: #161b22;
+  --nav-dropdown-color: #c9d1d9;
+  --nav-dropdown-hover-color: #79c0ff;
 }
 
 .light-background {
@@ -74,58 +73,6 @@ h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--default-font);
-}
-
-/* PHP Email Form Messages
-------------------------------*/
-.php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .sent-message {
-  display: none;
-  color: #ffffff;
-  background: #059652;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .loading {
-  display: none;
-  background: var(--surface-color);
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-}
-
-.php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--accent-color);
-  border-top-color: var(--surface-color);
-  animation: php-email-form-loading 1s linear infinite;
-}
-
-@keyframes php-email-form-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 /*--------------------------------------------------------------
@@ -227,34 +174,53 @@ body.scrolled .header {
   }
 }
 
-/*-------------------------------------------------------------- # Mobile Navigation --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Mobile Navigation (FIXED + SCROLLABLE)
+--------------------------------------------------------------*/
 @media (max-width: 1199px) {
+  .navmenu {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0;
+    transform: translateX(100%) !important;
+    background: rgba(10, 15, 20, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 9998;
+    transition: transform 0.4s ease;
+  }
+
   .mobile-nav-toggle {
+    position: fixed;
+    top: 18px;
+    right: 25px;
     color: var(--nav-color);
     font-size: 30px;
     cursor: pointer;
+    z-index: 10001;
     transition: color 0.3s ease;
   }
-  .mobile-nav-toggle:hover {
-    color: var(--accent-color);
+
+  .mobile-nav-active .navmenu {
+    transform: translateX(0) !important;
   }
-  .navmenu {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 15, 20, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 9998;
-    transform: translateX(100%);
-    transition: transform 0.4s ease;
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: var(--contrast-color);
+    font-size: 36px;
   }
+
   .navmenu ul {
     list-style: none;
-    padding: 80px 30px;
+    padding: 90px 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
+
   .navmenu a {
     color: var(--nav-dropdown-color);
     font-family: var(--nav-font);
@@ -263,36 +229,19 @@ body.scrolled .header {
     text-decoration: none;
     transition: all 0.3s ease;
   }
+
   .navmenu a:hover,
   .navmenu .active {
     color: var(--accent-color);
   }
-  .mobile-nav-active .navmenu {
-    transform: translateX(0);
-  }
-  .mobile-nav-active .mobile-nav-toggle {
-    color: var(--contrast-color);
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    z-index: 9999;
-    font-size: 36px;
-  } /* Dropdown in Mobile */
-  .navmenu .dropdown ul {
-    padding-left: 15px;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    border-left: 2px solid rgba(19, 135, 193, 0.3);
-    margin-top: 10px;
-  }
-  .navmenu .dropdown > .dropdown-active {
-    display: flex;
+
+  body.mobile-nav-active {
+    overflow: hidden;
   }
 }
 
 /*--------------------------------------------------------------
-# Hero Section (Responsive)
+# Hero Section (Beranda)
 --------------------------------------------------------------*/
 .hero {
   position: relative;
@@ -337,7 +286,6 @@ body.scrolled .header {
   display: inline-block;
 }
 
-/* Hover: Gradient bergerak + glow meningkat */
 .hero .hero-actions .btn:hover {
   background-position: right center;
   box-shadow: 0 0 20px rgba(0, 180, 255, 0.6);
@@ -364,7 +312,6 @@ body.scrolled .header {
   backdrop-filter: blur(8px);
 }
 
-/* Gambar */
 .hero .hero-image {
   position: relative;
   text-align: center;
@@ -379,7 +326,6 @@ body.scrolled .header {
   border: 3px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Floating Cards */
 .hero .floating-elements {
   position: absolute;
   inset: 0;
@@ -650,57 +596,108 @@ body.scrolled .header {
 }
 
 /*--------------------------------------------------------------
-# Scroll Top Button Modern
+# Scroll Top Button — Modern Tech Style
 --------------------------------------------------------------*/
 .scroll-top {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 50px;
-  height: 50px;
-  background: var(--accent-color, #00b3ff);
-  color: var(--contrast-color, #fff);
+  right: 25px;
+  bottom: 25px;
+  width: 54px;
+  height: 54px;
+  background: linear-gradient(135deg, #00b3ff, #0077ff);
+  color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 15px rgba(0, 179, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 179, 255, 0.6),
+    inset 0 0 8px rgba(255, 255, 255, 0.1);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s ease-in-out, transform 0.3s ease-in-out;
+  transform: scale(0.9);
+  transition: all 0.4s ease, box-shadow 0.3s ease;
   z-index: 9999;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
+/* Icon style */
 .scroll-top i {
-  font-size: 1.5rem;
-  line-height: 0;
-  transition: transform 0.3s ease-in-out;
+  font-size: 1.8rem;
+  transition: transform 0.4s ease;
 }
 
-/* Hover effect */
-.scroll-top:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 12px 25px rgba(0, 179, 255, 0.6);
-  background-color: color-mix(in srgb, var(--accent-color, #00b3ff), #fff 15%);
-}
-
-/* Active state */
+/* Active (show) state */
 .scroll-top.active {
   opacity: 1;
   visibility: visible;
-  bottom: 25px;
+  transform: scale(1);
+  bottom: 30px;
 }
 
-/* Smooth transition for icon */
-.scroll-top.active i {
-  transform: rotate(0deg);
+/* Hover effects */
+.scroll-top:hover {
+  background: linear-gradient(135deg, #00e0ff, #0099ff);
+  box-shadow: 0 0 25px rgba(0, 179, 255, 0.8),
+    inset 0 0 10px rgba(255, 255, 255, 0.15);
+  transform: translateY(-6px) scale(1.08);
 }
 
-/* Disable AOS delay on mobile */
-@media screen and (max-width: 768px) {
-  [data-aos-delay] {
-    transition-delay: 0 !important;
+.scroll-top:hover i {
+  transform: translateY(-3px);
+}
+
+/* Ripple animation on hover */
+.scroll-top::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 179, 255, 0.4) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.scroll-top:hover::before {
+  opacity: 1;
+  transform: scale(1.8);
+}
+
+/* Optional glowing border animation */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 179, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 179, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 179, 255, 0.4);
+  }
+}
+
+.scroll-top.active {
+  animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .scroll-top {
+    width: 48px;
+    height: 48px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .scroll-top i {
+    font-size: 1.5rem;
   }
 }
 
