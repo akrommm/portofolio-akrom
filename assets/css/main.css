@@ -1502,65 +1502,98 @@ section,
   color: var(--default-color);
 }
 
-/* Quote */
+/* ✨ Personal Quote (dengan efek italic + gradient elegan) */
 .about .personal-quote p {
   font-family: var(--default-font);
   font-size: clamp(20px, 3vw, 26px);
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
   background: linear-gradient(90deg, #ffffff, #8af1f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 0 auto;
+  max-width: 800px;
 }
 
-/* Fact Pills */
+.about .personal-quote p::before,
+.about .personal-quote p::after {
+  color: #8af1f5;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* 🎯 Fact Pills Container */
+.about .row.g-3 {
+  row-gap: 1.5rem;
+}
+
+/* 💎 Fact Pill */
 .about .fact-pill {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row; /* ikon kiri - teks kanan */
   gap: 10px;
-  padding: 12px 18px;
+  padding: 14px 22px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(18, 25, 32, 0.55);
-  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
   transition: all 0.4s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  min-width: 160px;
+  text-align: center;
+  animation: float-pill 6s ease-in-out infinite;
 }
 
-/* Icon & Text */
+/* 🌈 Icon */
 .about .fact-pill i {
   color: var(--accent-color, #00b4ff);
-  font-size: 1.2rem;
-  transition: 0.4s ease;
+  font-size: 1.4rem;
+  transition: transform 0.4s ease, color 0.4s ease;
+  flex-shrink: 0;
 }
 
+/* ✨ Text */
 .about .fact-pill span {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
   letter-spacing: 0.3px;
-  transition: 0.4s ease;
+  transition: color 0.4s ease;
+  line-height: 1.2;
 }
 
-/* Hover Effect */
+/* 🌟 Hover State */
 .about .fact-pill:hover {
-  transform: translateY(-4px) scale(1.05);
-  border-color: rgba(0, 180, 255, 0.5);
-  box-shadow: 0 0 20px rgba(0, 180, 255, 0.25);
+  transform: translateY(-6px) scale(1.05);
+  border-color: rgba(0, 180, 255, 0.4);
   background: linear-gradient(
     135deg,
     rgba(0, 180, 255, 0.15),
-    rgba(92, 225, 230, 0.1)
+    rgba(92, 225, 230, 0.08)
   );
+  box-shadow: 0 0 25px rgba(0, 180, 255, 0.2);
 }
 
-/* Glow pulse animation on hover */
+.about .fact-pill:hover i {
+  transform: scale(1.2) rotate(8deg);
+  color: #8af1f5;
+}
+
+.about .fact-pill:hover span {
+  color: #ffffff;
+}
+
+/* 💫 Glow pulse animation */
 .about .fact-pill:hover::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 999px;
+  border-radius: inherit;
   background: radial-gradient(
     circle at center,
     rgba(0, 180, 255, 0.25) 0%,
@@ -1570,30 +1603,59 @@ section,
   animation: pulse-glow 1s ease-out forwards;
 }
 
+/* 🔮 Keyframes */
 @keyframes pulse-glow {
   0% {
-    opacity: 0.5;
+    opacity: 0.6;
     transform: scale(0.9);
   }
   100% {
     opacity: 0;
-    transform: scale(1.6);
+    transform: scale(1.7);
   }
 }
 
-/* Subtle floating effect */
 @keyframes float-pill {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
   }
 }
 
-.about .fact-pill {
-  animation: float-pill 6s ease-in-out infinite;
+/* 📱 Responsiveness */
+@media (max-width: 768px) {
+  .about .fact-pill {
+    min-width: 130px;
+    padding: 12px 18px;
+    gap: 8px;
+  }
+
+  .about .fact-pill i {
+    font-size: 1.2rem;
+  }
+
+  .about .fact-pill span {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about .fact-pill {
+    min-width: unset;
+    padding: 10px 14px;
+    gap: 6px;
+  }
+
+  .about .fact-pill i {
+    font-size: 1.1rem;
+  }
+
+  .about .fact-pill span {
+    font-size: 13px;
+  }
 }
 
 .about .image-wrapper {
