@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Arief Muhammad Akrom - Kontak</title>
+    <title>Arief Muhammad Akrom - Tentang Saya</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -28,6 +28,132 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        /* Coming Soon Section */
+        .coming-soon {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0a0f14 0%, #121a24 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon h1 {
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00b4ff, #5ce1e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        .coming-soon p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(16px, 2vw, 20px);
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.6;
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+
+        .coming-soon .btn {
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-weight: 500;
+            background: linear-gradient(90deg, #00b4ff, #5ce1e6, #00b4ff);
+            background-size: 200% auto;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.4s;
+            box-shadow: 0 0 20px rgba(0, 180, 255, 0.3);
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .coming-soon .btn:hover {
+            background-position: right center;
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 180, 255, 0.6);
+        }
+
+        /* Floating Icons */
+        .floating-icon {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.06);
+            font-size: 80px;
+            animation: floatIcon 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 1.5s;
+        }
+
+        .floating-icon:nth-child(3) {
+            top: 50%;
+            right: 25%;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatIcon {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+    </style>
 </head>
 
 <body class="index-page">
@@ -39,9 +165,9 @@
                     <li><a href="index.html">Beranda</a></li>
                     <li><a href="tentang.html">Tentang</a></li>
                     <li><a href="riwayat.html">Riwayat</a></li>
-                    <li><a href="layanan.html">Layanan</a></li>
+                    <li><a href="layanan.html" class="active">Layanan</a></li>
                     <li><a href="portofolio.html">Portofolio</a></li>
-                    <li><a href="kontak.html" class="active">Kontak</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
                 </ul>
             </nav>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -49,68 +175,19 @@
     </header>
 
     <main class="main">
-        <!-- 🌌 Contact Section -->
-        <section id="contact" class="contact section">
-            <div class="container py-5" data-aos="fade-up">
-                <!-- Section Title -->
-                <div class="text-center mb-5">
-                    <h2 class="fw-bold mb-3">Jalin Koneksi</h2>
-                    <p class="section-subtitle">
-                        Tertarik berkolaborasi atau ingin berdiskusi? Hubungi saya melalui kontak di bawah.
-                    </p>
-                </div>
+        <!-- Coming Soon Section -->
+        <main>
+            <section class="coming-soon" data-aos="zoom-in" data-aos-delay="150">
+                <i class="bi bi-gear-wide-connected floating-icon"></i>
+                <i class="bi bi-code-slash floating-icon"></i>
+                <i class="bi bi-laptop floating-icon"></i>
 
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="info-box" data-aos="zoom-in" data-aos-delay="200">
-                            <!-- Address -->
-                            <div class="info-item">
-                                <div class="icon-box">
-                                    <i class="bi bi-geo-alt"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Alamat</h4>
-                                    <p>Kabupaten Ketapang, Kalimantan Barat, 78813, Indonesia</p>
-                                </div>
-                            </div>
-
-                            <!-- Phone -->
-                            <div class="info-item">
-                                <div class="icon-box">
-                                    <i class="bi bi-telephone"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>No Handphone</h4>
-                                    <p><a href="https://wa.me/6289531231716" target="_blank">+62 895 3123 1716</a></p>
-                                </div>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="info-item">
-                                <div class="icon-box">
-                                    <i class="bi bi-envelope"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Email</h4>
-                                    <p><a href="mailto:arfmhmmdakrm1205@gmail.com">arfmhmmdakrm1205@gmail.com</a></p>
-                                </div>
-                            </div>
-
-                            <!-- Social -->
-                            <div class="social-links mt-4 text-center" data-aos="fade-up" data-aos-delay="400">
-                                <a href="https://www.instagram.com/arfmhmmdakrm_/?hl=id" target="_blank"
-                                    class="social-icon instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="https://www.linkedin.com/in/arief-muhammad-akrom" target="_blank"
-                                    class="social-icon linkedin"><i class="bi bi-linkedin"></i></a>
-                                <a href="https://github.com/akrommm" target="_blank" class="social-icon github"><i
-                                        class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+                <h1>Segera Hadir!</h1>
+                <p>Halaman Layanan sedang dalam pengembangan.
+                    Nantikan fitur-fitur menarik dan solusi digital dari saya segera!</p>
+                <a href="index.html" class="btn"><i class="bi bi-arrow-left-circle me-1"></i> Kembali ke Beranda</a>
+            </section>
+        </main>
     </main>
 
     <footer id="footer" class="footer py-5">
@@ -139,7 +216,7 @@
 
     <script>
         // otomatis update tahun
-        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 
     <!-- Scroll Top (Rocket Version) -->
@@ -167,7 +244,6 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
-
 </body>
 
 </html>
